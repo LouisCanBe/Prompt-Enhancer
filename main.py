@@ -180,3 +180,7 @@ st.text("")
 st.text("")
 st.markdown("<p style='text-align: center;'>Email: lim.gadi@gmail.com</p>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>Github: @lim-hyo-jeong</p>", unsafe_allow_html=True)
+
+st.markdown("<p style='text-align: center;'>Customized Url version</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Email: louis_wxl@outlook.com</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Github: @LouisCanBe</p>", unsafe_allow_html=True)
