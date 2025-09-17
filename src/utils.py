@@ -5,10 +5,13 @@ import os
 from src.prompts import templates
 
 
-def load_model(model_name):
+def load_model(model_name, api_base=None):
     OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-    llm = ChatOpenAI(api_key=OPENAI_API_KEY, model_name=model_name)
-    return llm 
+    kwargs = {"api_key": OPENAI_API_KEY, "model_name": model_name}
+    if api_base:
+        kwargs["openai_api_base"] = api_base
+    llm = ChatOpenAI(**kwargs)
+    return llm
 
 
 def convert_newlines(prompt):

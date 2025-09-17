@@ -13,12 +13,15 @@ st.text("")
 st.text("")
 
 
-with st.popover("**:blue[Enter your OpenAI API key]**"):
+
+with st.popover("**:blue[Enter your OpenAI API key & API Base URL]**"):
     OPENAI_API_KEY = st.text_input("OpenAI API key", type="password")
-    os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY 
+    os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
     st.info("""
     You can get your OpenAI API key [here](https://platform.openai.com/api-keys)
     """)
+    st.text("")
+    OPENAI_API_BASE = st.text_input("OpenAI API Base URL (可选, 支持自定义/代理/兼容 Azure)", value="https://api.openai.com/v1")
 
 temp, buff = st.columns([0.3, 0.7]) 
 if not OPENAI_API_KEY:
@@ -140,8 +143,8 @@ with col2:
             st.toast("Please enter your OpenAI API Key.")
 
         order_num = 1
-        with st.spinner("Processing..."): 
-            llm = load_model(model_name)
+        with st.spinner("Processing..."):
+            llm = load_model(model_name, api_base=OPENAI_API_BASE)
 
             if simplified:
                 prompt = apply_skills(llm, skills_to_apply, prompt, lang_eng) 
